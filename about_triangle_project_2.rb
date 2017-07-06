@@ -13,4 +13,17 @@ class AboutTriangleProject2 < Neo::Koan
     assert_raise(TriangleError) do triangle(2, 4, 2) end
     # HINT: for tips, see http://stackoverflow.com/questions/3834203/ruby-koan-151-raising-exceptions
   end
+  def triangle(a, b, c)
+    raise TriangleError, "impossible triangle" if [a,b,c].min <= 0
+    x, y, z = [a,b,c].sort
+    raise TriangleError, "no two sides can be < than the third" if x + y <= z
+
+    if a == b && b == c # && a == c # XXX: last check implied by previous 2
+        :equilateral
+    elsif a == b || b == c || c == a
+        :isosceles
+    else
+        :scalene
+    end
+end 
 end
