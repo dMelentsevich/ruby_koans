@@ -35,7 +35,6 @@ class AboutClasses < Neo::Koan
 
     assert_raise(SyntaxError) do
       eval "fido.@name"
-      # NOTE: Using eval because the above line is a syntax error.
     end
   end
 
@@ -50,8 +49,8 @@ class AboutClasses < Neo::Koan
     fido = Dog2.new
     fido.set_name("Fido")
 
-    assert_equal "Fido", fido.instance_eval("@name")  # string version
-    assert_equal "Fido", fido.instance_eval { @name } # block version
+    assert_equal "Fido", fido.instance_eval("@name")  
+    assert_equal "Fido", fido.instance_eval { @name } 
   end
 
   # ------------------------------------------------------------------
@@ -122,8 +121,6 @@ class AboutClasses < Neo::Koan
     assert_raise(ArgumentError) do
       Dog6.new
     end
-    # THINK ABOUT IT:
-    # Why is this so?
   end
 
   def test_different_objects_have_different_instance_variables

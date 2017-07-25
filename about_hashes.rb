@@ -26,10 +26,6 @@ class AboutHashes < Neo::Koan
     assert_raise(KeyError) do
       hash.fetch(:doesnt_exist)
     end
-
-    # THINK ABOUT IT:
-    #
-    # Why might you want to use #fetch instead of #[] when accessing hash keys?
   end
 
   def test_changing_hashes
@@ -38,9 +34,6 @@ class AboutHashes < Neo::Koan
 
     expected = { :one => "eins", :two => "dos" }
     assert_equal true, expected == hash
-
-    # Bonus Question: Why was "expected" broken out into a variable
-    # rather than used as a literal?
   end
 
   def test_hash_is_unordered

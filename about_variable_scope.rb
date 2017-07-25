@@ -20,7 +20,6 @@ class AboutVariableScope < Neo::Koan
 
   inaccessible = "Outside our universe"
   def test_defs_cannot_access_variables_outside_scope
-    # defined? does not return true or false
     assert_equal __, defined? inaccesible
   end
 
@@ -46,11 +45,9 @@ class AboutVariableScope < Neo::Koan
 
   class Mouse
     @@total = 0
-    # Class variables are prefixed with two '@' characters.
 
     def initialize(n)
       @name = n
-      # Instance variables are prefixed with one '@' character.
       @@total += 1 
     end
 
@@ -69,36 +66,28 @@ class AboutVariableScope < Neo::Koan
   end
 
   def test_class_variable
-    (1..9).each { |i| Mouse.new("#{i}") }
-    # Things may appear easier than they actually are.  
+    (1..9).each { |i| Mouse.new("#{i}") }  
     assert_equal __, Mouse.count
   end
-
-  # Meditate on the following: 
-  # What is the difference between a class variable and instance variable?
 
   # ------------------------------------------------------
   
   $anywhere = "Anywhere"
-  # Global variables are prefixed with the '$' character.
 
   def test_global_variables_can_be_accessed_from_any_scope
     assert_equal __, $anywhere    
   end
 
   def test_global_variables_can_be_changed_from_any_scope
-    # From within a method
     $anywhere = "Here"
     assert_equal __, $anywhere
   end
 
   def test_global_variables_retain_value_from_last_change
-    # What is $anywhere?
     assert_equal __, $anywhere
   end
 
   def test_global_variables_can_be_changed_from_any_scope_2
-    # From within a block
     (1..2).each do
       $anywhere = "Hey"
     end
@@ -108,7 +97,3 @@ class AboutVariableScope < Neo::Koan
 
 end
 
-# THINK ABOUT IT:
-# 
-# What will $anywhere be down here, outside of the scope of the
-# AboutVariableScope class?

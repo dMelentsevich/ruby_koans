@@ -2,14 +2,6 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 include Java
 
-# Concepts
-# * Pull in a java class
-# * calling a method, Camel vs snake
-# * Resolving module/class name conflicts
-# * Showing what gets returned
-# * Ruby Strings  VS Java Strings
-# * Calling custom java class
-# * Calling Ruby from java???
 
 class AboutJavaInterop < Neo::Koan
   def test_using_a_java_library_class
@@ -26,16 +18,6 @@ class AboutJavaInterop < Neo::Koan
     include_class "java.util.TreeSet"
     assert_equal __, defined?(TreeSet)
   end
-
-  # THINK ABOUT IT:
-  #
-  # What if we use:
-  #
-  #   include_class "java.lang.String"
-  #
-  # What would be the value of the String constant after this
-  # include_class is run?  Would it be useful to provide a way of
-  # aliasing java classes to different names?
 
   JString = java.lang.String
   def test_also_java_class_can_be_given_ruby_aliases
@@ -74,18 +56,6 @@ class AboutJavaInterop < Neo::Koan
     assert_equal __, ruby_string == java_string
     assert_equal __, java_string == ruby_string
 
-    # THINK ABOUT IT:
-    #
-    # Is there any possible way for this to be more wrong?
-    #
-    # SERIOUSLY, THINK ABOUT IT:
-    #
-    # Why do you suppose that Ruby and Java strings compare like that?
-    #
-    # ADVANCED THINK ABOUT IT:
-    #
-    # Is there a way to make Ruby/Java string comparisons commutative?
-    # How would you do it?
   end
 
   def test_however_most_methods_returning_strings_return_ruby_strings
@@ -116,7 +86,6 @@ class AboutJavaInterop < Neo::Koan
 
   # ------------------------------------------------------------------
 
-  # Open the Java ArrayList class and add a new method.
   class Java::JavaUtil::ArrayList
     def multiply_all
       result = 1

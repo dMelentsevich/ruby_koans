@@ -33,9 +33,6 @@ class AboutControlStatements < Neo::Koan
               :false_value
             end
     assert_equal :false_value, value
-
-    # NOTE: Actually, EVERY statement in Ruby will return a value, not
-    # just if statements.
   end
 
   def test_if_statements_with_no_else_with_false_condition_return_value
@@ -59,7 +56,7 @@ class AboutControlStatements < Neo::Koan
 
   def test_unless_statement
     result = :default_value
-    unless false    # same as saying 'if !false', which evaluates as 'if true'
+    unless false    
       result = :false_value
     end
     assert_equal :false_value, result
@@ -67,7 +64,7 @@ class AboutControlStatements < Neo::Koan
 
   def test_unless_statement_evaluate_true
     result = :default_value
-    unless true    # same as saying 'if !true', which evaluates as 'if false'
+    unless true    
       result = :true_value
     end
     assert_equal :default_value, result

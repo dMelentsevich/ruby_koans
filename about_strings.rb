@@ -97,11 +97,6 @@ EOS
     there = "World"
     hi << there
     assert_equal "Hello, World", original_string
-
-    # THINK ABOUT IT:
-    #
-    # Ruby programmers tend to favor the shovel operator (<<) over the
-    # plus equals operator (+=) when building up strings.  Why?
   end
 
   def test_double_quoted_string_interpret_escape_characters
@@ -146,8 +141,6 @@ EOS
   def test_you_can_get_a_single_character_from_a_string
     string = "Bacon, lettuce and tomato"
     assert_equal "a", string[1]
-
-    # Surprised?
   end
 
   in_ruby_version("1.8") do
@@ -176,10 +169,6 @@ EOS
     string = "the:rain:in:spain"
     words = string.split(/:/)
     assert_equal ["the", "rain", "in", "spain"], words
-
-    # NOTE: Patterns are formed from Regular Expressions.  Ruby has a
-    # very powerful Regular Expression library.  We will become
-    # enlightened about them soon.
   end
 
   def test_strings_can_be_joined

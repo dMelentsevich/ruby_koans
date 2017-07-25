@@ -2,11 +2,6 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 class AboutIteration < Neo::Koan
 
-  # -- An Aside ------------------------------------------------------
-  # Ruby 1.8 stores names as strings. Ruby 1.9 and later stores names
-  # as symbols. So we use a version dependent method "as_name" to
-  # convert to the right format in the koans. We will use "as_name"
-  # whenever comparing to lists of methods.
 
   in_ruby_version("1.8") do
     def as_name(name)
@@ -20,7 +15,6 @@ class AboutIteration < Neo::Koan
     end
   end
 
-  # Ok, now back to the Koans.
   # -------------------------------------------------------------------
 
   def test_each_is_a_method_on_arrays
@@ -58,7 +52,6 @@ class AboutIteration < Neo::Koan
     new_array = array.collect { |item| item + 10 }
     assert_equal [11, 12, 13], new_array
 
-    # NOTE: 'map' is another name for the 'collect' operation
     another_array = array.map { |item| item + 10 }
     assert_equal [11, 12, 13], another_array
   end
@@ -69,7 +62,6 @@ class AboutIteration < Neo::Koan
     even_numbers = array.select { |item| (item % 2) == 0 }
     assert_equal [2,4,6], even_numbers
 
-    # NOTE: 'find_all' is another name for the 'select' operation
     more_even_numbers = array.find_all { |item| (item % 2) == 0 }
     assert_equal [2, 4, 6], more_even_numbers
   end
@@ -86,37 +78,15 @@ class AboutIteration < Neo::Koan
 
     result2 = [2, 3, 4].inject(1) { |product, item| product * item }
     assert_equal 24, result2
-
-    # Extra Credit:
-    # Describe in your own words what inject does.
   end
 
   def test_all_iteration_methods_work_on_any_collection_not_just_arrays
-    # Ranges act like a collection
     result = (1..3).map { |item| item + 10 }
     assert_equal [11, 12, 13], result
 
-    # Files act like a collection of lines
     File.open("example_file.txt") do |file|
       upcase_lines = file.map { |line| line.strip.upcase }
       assert_equal ["THIS", "IS", "A", "TEST"], upcase_lines
     end
-
-    # NOTE: You can create your own collections that work with each,
-    # map, select, etc.
   end
-
-  # Bonus Question:  In the previous koan, we saw the construct:
-  #
-  #   File.open(filename) do |file|
-  #     # code to read 'file'
-  #   end
-  #
-  # Why did we do it that way instead of the following?
-  #
-  #   file = File.open(filename)
-  #   # code to read 'file'
-  #
-  # When you get to the "AboutSandwichCode" koan, recheck your answer.
-
 end

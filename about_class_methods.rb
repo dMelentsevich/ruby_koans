@@ -143,22 +143,6 @@ class AboutClassMethods < Neo::Koan
     assert_equal :still_another_way, Dog.another_class_method
   end
 
-  # THINK ABOUT IT:
-  #
-  # The two major ways to write class methods are:
-  #   class Demo
-  #     def self.method
-  #     end
-  #
-  #     class << self
-  #       def class_methods
-  #       end
-  #     end
-  #   end
-  #
-  # Which do you prefer and why?
-  # Are there times you might prefer one over the other?
-
   # ------------------------------------------------------------------
 
   def test_heres_an_easy_way_to_call_class_methods_from_instance_methods

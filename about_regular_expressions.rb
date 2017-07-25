@@ -29,17 +29,7 @@ class AboutRegularExpressions < Neo::Koan
     assert_equal "abb", "abbcccddddeeeee"[/ab*/]
     assert_equal "a", "abbcccddddeeeee"[/az*/]
     assert_equal "", "abbcccddddeeeee"[/z*/]
-
-    # THINK ABOUT IT:
-    #
-    # When would * fail to match?
   end
-
-  # THINK ABOUT IT:
-  #
-  # We say that the repetition operators above are "greedy."
-  #
-  # Why?
 
   # ------------------------------------------------------------------
 
@@ -68,7 +58,6 @@ class AboutRegularExpressions < Neo::Koan
   end
 
   def test_slash_w_is_a_shortcut_for_a_word_character_class
-    # NOTE:  This is more like how a programmer might define a word.
     assert_equal "variable_1", "variable_1 = 42"[/[a-zA-Z0-9_]+/]
     assert_equal "variable_1", "variable_1 = 42"[/\w+/]
   end
@@ -84,7 +73,6 @@ class AboutRegularExpressions < Neo::Koan
   def test_shortcut_character_classes_are_negated_with_capitals
     assert_equal "the number is ", "the number is 42"[/\D+/]
     assert_equal "space:", "space: \t\n"[/\S+/]
-    # ... a programmer would most likely do
     assert_equal " = ", "variable_1 = 42"[/[^a-zA-Z0-9_]+/]
     assert_equal " = ", "variable_1 = 42"[/\W+/]
   end
@@ -140,11 +128,7 @@ class AboutRegularExpressions < Neo::Koan
     assert_equal "Summer", "Summer Gray"[grays, 1]
     assert_equal nil, "Jim Gray"[grays, 1]
   end
-
-  # THINK ABOUT IT:
-  #
-  # Explain the difference between a character class ([...]) and alternation (|).
-
+  
   # ------------------------------------------------------------------
 
   def test_scan_is_like_find_all

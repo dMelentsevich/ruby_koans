@@ -23,9 +23,4 @@ class AboutKeywordArguments < Neo::Koan
     end
     assert_match(/wrong number of arguments/, exception.message)
   end
-
-  # THINK ABOUT IT:
-  #
-  # Keyword arguments always have a default value, making them optional to the caller
-
 end

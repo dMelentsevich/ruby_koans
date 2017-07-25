@@ -24,18 +24,14 @@ class AboutMessagePassing < Neo::Koan
     mc = MessageCatcher.new
 
     assert mc.send("caught?")
-    assert mc.send("caught" + "?")    # What do you need to add to the first string?
-    assert mc.send("CAUGHT?".downcase)      # What would you need to do to the string?
+    assert mc.send("caught" + "?")
+    assert mc.send("CAUGHT?".downcase)      
   end
 
   def test_send_with_underscores_will_also_send_messages
     mc = MessageCatcher.new
 
     assert_equal true, mc.__send__(:caught?)
-
-    # THINK ABOUT IT:
-    #
-    # Why does Ruby provide both send and __send__ ?
   end
 
   def test_classes_can_be_asked_if_they_know_how_to_respond
@@ -63,13 +59,6 @@ class AboutMessagePassing < Neo::Koan
     assert_equal [3, 4, nil, 6], mc.send(:add_a_payload, 3, 4, nil, 6)
   end
 
-  # NOTE:
-  #
-  # Both obj.msg and obj.send(:msg) sends the message named :msg to
-  # the object. We use "send" when the name of the message can vary
-  # dynamically (e.g. calculated at run time), but by far the most
-  # common way of sending a message is just to say: obj.msg.
-
   # ------------------------------------------------------------------
 
   class TypicalObject
@@ -91,23 +80,6 @@ class AboutMessagePassing < Neo::Koan
       typical.method_missing(:foobar)
     end
     assert_match(/foobar/, exception.message)
-
-    # THINK ABOUT IT:
-    #
-    # If the method :method_missing causes the NoMethodError, then
-    # what would happen if we redefine method_missing?
-    #
-    # NOTE:
-    #
-    # In Ruby 1.8 the method_missing method is public and can be
-    # called as shown above. However, in Ruby 1.9 (and later versions)
-    # the method_missing method is private. We explicitly made it
-    # public in the testing framework so this example works in both
-    # versions of Ruby. Just keep in mind you can't call
-    # method_missing like that after Ruby 1.9 normally.
-    #
-    # Thanks.  We now return you to your regularly scheduled Ruby
-    # Koans.
   end
 
   # ------------------------------------------------------------------
@@ -164,7 +136,6 @@ class AboutMessagePassing < Neo::Koan
 
   # ------------------------------------------------------------------
 
-  # (note: just reopening class from above)
   class WellBehavedFooCatcher
     def respond_to?(method_name)
       if method_name.to_s[0,3] == "foo"

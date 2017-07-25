@@ -14,7 +14,6 @@ class AboutOpenClasses < Neo::Koan
 
   # ------------------------------------------------------------------
 
-  # Open the existing Dog class and add a new method.
   class Dog
     def wag
       "HAPPY"
@@ -39,7 +38,4 @@ class AboutOpenClasses < Neo::Koan
     assert_equal false, 1.even?
     assert_equal true, 2.even?
   end
-
-  # NOTE: To understand why we need the :: before Integer, you need to
-  # become enlightened about scope.
 end
